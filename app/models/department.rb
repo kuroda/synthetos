@@ -1,5 +1,3 @@
 class Department < ActiveRecord::Base
-  class << self
-    include DurationLimited
-  end
+  include DurationLimited
 end
