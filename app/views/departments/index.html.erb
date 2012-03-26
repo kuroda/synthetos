@@ -1,0 +1,9 @@
+<h1>Departments#index</h1>
+
+<ul>
+  <% @departments.each do |d| %>
+    <li>
+      <%= d.name %>: <%= link_to "Products", [ d, :products ] %>
+    </li>
+  <% end %>
+</ul>
