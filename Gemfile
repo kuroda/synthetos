@@ -10,8 +10,6 @@ end
 
 gem 'jquery-rails'
 
-gem "composite_primary_keys", "~> 5.0.4"
-
 group :test, :development do
   gem "rspec-rails", "~> 2.9.0"
   gem "factory_girl_rails"

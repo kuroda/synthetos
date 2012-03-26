@@ -3,7 +3,7 @@
     code: code,
     seq_number: 1,
     name: code.capitalize,
-    established_on: 2.years.ago
+    started_on: 2.years.ago
   )
 end
 

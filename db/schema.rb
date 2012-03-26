@@ -14,27 +14,27 @@
 ActiveRecord::Schema.define(:version => 20120325133157) do
 
   create_table "departments", :id => false, :force => true do |t|
-    t.string   "code",           :null => false
-    t.integer  "seq_number",     :null => false
-    t.string   "name",           :null => false
-    t.date     "established_on", :null => false
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.string   "code",       :null => false
+    t.string   "name",       :null => false
+    t.date     "started_on", :null => false
+    t.date     "ended_on"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  add_index "departments", ["code", "seq_number"], :name => "index_departments_on_code_and_seq_number", :unique => true
+  add_index "departments", ["code", "started_on"], :name => "index_departments_on_code_and_started_on", :unique => true
 
   create_table "products", :id => false, :force => true do |t|
-    t.string   "code",                  :null => false
-    t.integer  "model_number",          :null => false
-    t.string   "department_code",       :null => false
-    t.integer  "department_seq_number", :null => false
-    t.string   "name",                  :null => false
+    t.string   "code",            :null => false
+    t.string   "department_code", :null => false
+    t.string   "name",            :null => false
     t.text     "description"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.date     "started_on",      :null => false
+    t.date     "ended_on"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
-  add_index "products", ["code", "model_number"], :name => "index_products_on_code_and_model_number", :unique => true
+  add_index "products", ["code", "started_on"], :name => "index_products_on_code_and_started_on", :unique => true
 
 end
