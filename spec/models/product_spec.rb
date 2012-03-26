@@ -10,6 +10,11 @@ describe Product do
       code: "robot", name: "Department1",
       started_on: Date.new(2002, 1, 1), ended_on: nil) }
   
+  before do
+    department0
+    department1
+  end
+  
   it "2001年1月1日当時の部門(department)と関連づけできる" do
     product = FactoryGirl.build(:product)
     product.code = "alpha"
@@ -19,7 +24,7 @@ describe Product do
     product.save!
     
     p = Product.find("alpha", Date.new(2001, 1, 1))
-    p.department.code.should == department0.name
+    p.department.name.should == department0.name
   end
   
   it "2003年1月1日当時の部門(department)と関連づけできる" do
