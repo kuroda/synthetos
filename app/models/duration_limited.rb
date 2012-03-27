@@ -1,5 +1,3 @@
-require 'active_support/concern'
-
 module DurationLimited
   extend ActiveSupport::Concern
   mattr_accessor :current_date
