@@ -10,7 +10,7 @@ end
 
 gem 'jquery-rails'
 
-gem "composite_primary_keys", "~> 5.0.4"
+gem "composite_primary_keys", :git => "git://github.com/drnic/composite_primary_keys.git"
 
 group :test, :development do
   gem "rspec-rails", "~> 2.9.0"
