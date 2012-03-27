@@ -2,21 +2,19 @@ require 'active_support/concern'
 
 module DurationLimited
   extend ActiveSupport::Concern
+  mattr_accessor :current_date
   
   included do
-    attr_accessor :current_date
-    
-    scope :effective_on,
-      ->(date) do
-        where("started_on <= ? AND (ended_on >= ? OR ended_on IS NULL)", date, date)
-      end
+    default_scope do
+      where("started_on <= ? AND (ended_on >= ? OR ended_on IS NULL)",
+        DurationLimited.current_date, DurationLimited.current_date)
+    end
   end
 
   module ClassMethods
-    def find(code, date)
-      record = self.where(code: code).effective_on(date).first
+    def find(code)
+      record = self.where(code: code).first
       raise ActiveRecord::RecordNotFound unless record
-      record.current_date = date
       record
     end
   end

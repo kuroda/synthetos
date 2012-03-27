@@ -20,10 +20,14 @@ describe Department do
   end
   
   it "部門(department)を複合キーで検索できる" do
-    dep0 = Department.find("robot", Date.new(2001, 1, 1))
+    DurationLimited.current_date = Date.new(2001, 1, 1)
+    
+    dep0 = Department.find("robot")
     dep0.name.should == department0.name
     
-    dep1 = Department.find("robot", Date.new(2003, 1, 1))
+    DurationLimited.current_date = Date.new(2003, 1, 1)
+    
+    dep1 = Department.find("robot")
     dep1.name.should == department1.name
   end
   
@@ -39,7 +43,9 @@ describe Department do
     FactoryGirl.create(:product, name: "p4", department_code: "ship",
       started_on: Date.new(2000, 1, 1), ended_on: nil)
     
-    dep = Department.find("robot", Date.new(2001, 1, 1))
+    DurationLimited.current_date = Date.new(2001, 1, 1)
+    
+    dep = Department.find("robot")
     dep.should have(2).products
     
     products = dep.products.order("products.started_on")

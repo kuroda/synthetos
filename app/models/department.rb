@@ -2,6 +2,6 @@ class Department < ActiveRecord::Base
   include DurationLimited
   
   def products
-    Product.where(department_code: code).effective_on(current_date)
+    Product.where(department_code: code)
   end
 end

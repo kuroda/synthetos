@@ -22,8 +22,10 @@ describe Product do
     product.ended_on = Date.new(2004, 1, 1)
     product.department_code = "robot"
     product.save!
-    
-    p = Product.find("alpha", Date.new(2001, 1, 1))
+
+    DurationLimited.current_date = Date.new(2001, 1, 1)
+
+    p = Product.find("alpha")
     p.department.name.should == department0.name
   end
   
@@ -35,7 +37,9 @@ describe Product do
     product.department_code = "robot"
     product.save!
     
-    p = Product.find("alpha", Date.new(2003, 1, 1))
+    DurationLimited.current_date = Date.new(2003, 1, 1)
+
+    p = Product.find("alpha")
     p.department.name.should == department1.name
   end
 end
