@@ -4,7 +4,7 @@ module DurationLimited
   
   included do
     default_scope do
-      where("started_on <= ? AND (ended_on >= ? OR ended_on IS NULL)",
+      where("started_on <= ? AND (ended_on > ? OR ended_on IS NULL)",
         DurationLimited.current_date, DurationLimited.current_date)
     end
   end
