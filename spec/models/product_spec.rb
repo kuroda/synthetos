@@ -29,7 +29,7 @@ describe Product do
     p.department.name.should == department0.name
   end
   
-  it "2003年1月1日当時の部門(department)と関連づけできる" do
+  it "2002年1月1日当時の部門(department)と関連づけできる" do
     product = FactoryGirl.build(:product)
     product.code = "alpha"
     product.started_on = Date.new(2000, 1, 1)
@@ -37,7 +37,7 @@ describe Product do
     product.department_code = "robot"
     product.save!
     
-    DurationLimited.current_date = Date.new(2003, 1, 1)
+    DurationLimited.current_date = Date.new(2002, 1, 1)
 
     p = Product.find("alpha")
     p.department.name.should == department1.name
