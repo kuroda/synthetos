@@ -11,7 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120325133157) do
+ActiveRecord::Schema.define(:version => 20120329004655) do
+
+  create_table "categories", :id => false, :force => true do |t|
+    t.string   "code",       :null => false
+    t.string   "name",       :null => false
+    t.date     "started_on", :null => false
+    t.date     "ended_on"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "categories", ["code", "started_on"], :name => "index_categories_on_code_and_started_on", :unique => true
+
+  create_table "category_product_links", :id => false, :force => true do |t|
+    t.string   "category_code"
+    t.string   "product_code"
+    t.date     "started_on",    :null => false
+    t.date     "ended_on"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "category_product_links", ["category_code", "product_code", "started_on"], :name => "index_category_product_links_on_codes", :unique => true
 
   create_table "departments", :id => false, :force => true do |t|
     t.string   "code",       :null => false
