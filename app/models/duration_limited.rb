@@ -3,6 +3,8 @@ module DurationLimited
   mattr_accessor :current_date
   
   included do
+    self.primary_key = "code"
+    
     default_scope do
       where("started_on <= ? AND (ended_on > ? OR ended_on IS NULL)",
         DurationLimited.current_date, DurationLimited.current_date)
