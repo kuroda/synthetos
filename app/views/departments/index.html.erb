@@ -4,7 +4,7 @@
   <% @departments.each do |d| %>
     <li>
       <%= d.name %>: <%= link_to "Products",
-        department_products_path(department_id: d.code) %>
+        department_products_path(params[:current_date], d) %>
     </li>
   <% end %>
 </ul>
