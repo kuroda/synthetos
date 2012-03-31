@@ -3,7 +3,8 @@
 <ul>
   <% @departments.each do |d| %>
     <li>
-      <%= d.name %>: <%= link_to "Products", [ d, :products ] %>
+      <%= d.name %>: <%= link_to "Products",
+        department_products_path(department_id: d.code) %>
     </li>
   <% end %>
 </ul>

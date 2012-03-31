@@ -8,7 +8,7 @@ module DurationLimited
         DurationLimited.current_date, DurationLimited.current_date)
     end
   end
-
+  
   module ClassMethods
     def belongs_to(name)
       module_eval <<-EOS, __FILE__, __LINE__ + 1
