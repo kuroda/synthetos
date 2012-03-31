@@ -17,5 +17,10 @@ describe ProductsController do
         department_id: product.department.code, id: product.code).
         should == "/2000-01-01/departments/#{product.department.code}/products/#{product.code}"
     end
+    
+    it "引数列挙でURLパスを作る" do
+      department_product_path("2000-01-01", product.department, product).
+        should == "/2000-01-01/departments/#{product.department.code}/products/#{product.code}"
+    end
   end
 end
