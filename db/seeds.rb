@@ -1,19 +1,21 @@
+date = Date.new(2010, 1, 1)
+
 %w(robot automobile ship).each do |code|
-  Department.create!(
+  Department.create!({
     code: code,
-    seq_number: 1,
     name: code.capitalize,
-    established_on: 2.years.ago
-  )
+    started_on: date,
+    ended_on: nil
+  }, without_protection: true)
 end
 
-%w(alpha bravo).each do |code|
-  Product.create!(
+%w(alpha bravo).each_with_index do |code, index|
+  Product.create!({
     code: code,
-    model_number: 2012,
+    started_on: date.advance(years: index),
+    ended_on: code == "alpha" ? date.advance(years: 1) : nil,
     department_code: "robot",
-    department_seq_number: 1,
     name: code.capitalize,
     description: ""
-  )
+  }, without_protection: true)
 end

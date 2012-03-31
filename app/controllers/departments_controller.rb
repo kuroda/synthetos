@@ -1,5 +1,5 @@
 class DepartmentsController < ApplicationController
   def index
-    @departments = Department.order("code, seq_number")
+    @departments = Department.order("code")
   end
 end

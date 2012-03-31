@@ -3,7 +3,8 @@
 <ul>
   <% @products.each do |p| %>
     <li>
-      <%= link_to p.name, [ @department, p ] %>
+      <%= link_to p.name,
+        department_product_path(params[:current_date], @department, p) %>
     </li>
   <% end %>
 </ul>
